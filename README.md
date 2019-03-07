@@ -10,25 +10,24 @@
   * ExcelDriver
 
 ## Project Outline
-  1. Data Preprocessing  
+  1. ***Data Preprocessing***  
   	Actual EPS, estimated EPS and announcement date of RIY1000 member stocks in 2017Q2 are downloaded in excel from Bloomberg terminal. Also, stocks with missing data are deleted. And we the final list of stocks are in .xls.   
 
-  2. Group Division  
+  2. ***Group Division***  
     Define the percentage of a stock's actual eps deviation from the estimated one to be **EPS surprise ratio**, and we can divide these stocks by their **EPS surprise ratio** into 3 groups called **"beat"**, **"meet"** and **"miss"** (where **beat** group stocks have the highest **EPS surprise ratio** about 5% ~ 10%).  
-
     To keep the uniform property of sampling in bootstrapping, these groups must be equally divided. The details are in **Divide.cpp** file.  
   
-  3. Historical Data Retrieving  
+  3. ***Historical Data Retrieving***  
 	  For each stock's 120 trading days' AR before and after the second quarter announcement date, libcurl (a library using cookies and crumbs to access pages) is used to retrieve them. Also, this is performed in a multithreading way. The details are in **Stock.cpp** file.
 
-  4. Bootstrapping  
+  4. ***Bootstrapping***  
   	A class called Bootstrap is created to do the sampling and CAAR calculation work. Once an instance of Bootstrap class is created, it will automatically do 5 times of sampling within these 3 groups, calculate and store their CAAR in a STL vector.
 
-  5. Visualize EPS Impacts  
+  5. ***Visualize EPS Impacts***  
   	ExcelDriver is used to visualize 3 groups' CAAR time series.
 
-  6. Menu Design  
+  6. ***Menu Design***  
     A command line menu is given to show the process of division, data retrieving, bootstrapping and visualizing. 
 
-  7. Conclusion  
+  7. ***Conclusion***  
 	  From ![CAAR](CAAR.jpg), We can draw the conclusion that EPS will have extra impacts on a stock over its benchmark (positive for **"beat"**, neutral for **"meet"** and **"negative"** for “miss”).
