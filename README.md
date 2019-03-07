@@ -31,3 +31,4 @@
 
   7. ***Conclusion***  
 	  From ![CAAR](CAAR.jpg), We can draw the conclusion that EPS will have extra impacts on a stock over its benchmark (positive for **"beat"**, neutral for **"meet"** and **"negative"** for “miss”).
+
